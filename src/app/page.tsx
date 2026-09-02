@@ -12,7 +12,7 @@ export default function Home() {
               <Link href="/pricing" className="text-gray-600 hover:text-gray-800 px-3 py-2 rounded-md text-sm font-medium">Pricing</Link>
               <Link href="/resources" className="text-gray-600 hover:text-gray-800 px-3 py-2 rounded-md text-sm font-medium">Resources</Link>
               <Link href="/login" className="text-gray-600 hover:text-gray-800 px-3 py-2 rounded-md text-sm font-medium">Login</Link>
-              <Link href="/signup" className="text-white bg-[#B34C2D] p-4 rounded-md text-sm font-medium">Get started</Link>
+              <Link href="/auth/signup" className="text-white bg-[#B34C2D] p-4 rounded-md text-sm font-medium">Get started</Link>
             </div>
           </div>
         </nav>
