@@ -10,6 +10,7 @@
     "format": "biome format --write"
   },
   "dependencies": {
+    "@tanstack/react-table": "^9.2.4",
     "badge": "^1.0.3",
     "button": "^1.1.1",
     "card": "^2.5.4",

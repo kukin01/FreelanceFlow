@@ -196,3 +196,6 @@ export const DUMMY_TESTIMONIALS: Testimonial[] = [
     testimony: "Professional, reliable, and exactly what my freelance business needed to scale.",
   },
 ];
+
+
+

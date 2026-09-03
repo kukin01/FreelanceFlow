@@ -186,20 +186,18 @@ export default function AuthPage() {
             <div className="h-px flex-1 bg-gray-300" />
           </div>
 
-          <div className="space-y-3 mb-6">
+          <div className="mb-6 grid grid-cols-2 gap-3">
               <button
                 type="button"
                 className="w-full flex items-center justify-center gap-2 border border-gray-300 bg-white text-gray-700 rounded-lg py-3 font-medium hover:bg-gray-50"
               >
                 <span>G</span>
-                Continue with Google
               </button>
               <button
                 type="button"
                 className="w-full flex items-center justify-center gap-2 border border-gray-300 bg-white text-gray-700 rounded-lg py-3 font-medium hover:bg-gray-50"
               >
                 <span>⌘</span>
-                Continue with GitHub
               </button>
           </div>
 
