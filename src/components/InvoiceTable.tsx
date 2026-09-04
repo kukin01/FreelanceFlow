@@ -1,7 +1,10 @@
 "use client"
 
+import { Input } from "@/components/ui/input"
+import React from "react"
 import {
   columnFilteringFeature,
+  globalFilteringFeature,
   columnVisibilityFeature,
   createColumnHelper,
   createFilteredRowModel,
@@ -17,6 +20,7 @@ import {
 } from "@tanstack/react-table"
 export const features = tableFeatures({
     columnFilteringFeature,
+    globalFilteringFeature,
     columnVisibilityFeature,
     rowPaginationFeature,
     rowSelectionFeature,
@@ -43,11 +47,38 @@ export type DataTableFeatures = typeof features;
 const columnHelper = createColumnHelper<DataTableFeatures, Invoice>()
 
 export const columns = columnHelper.columns([
-    columnHelper.accessor("invoiceCode", {header: "invoice#"}),
-    columnHelper.accessor("clientName", {header:"Client"}),
-    columnHelper.accessor("services", {header:"Services"}),
-    columnHelper.accessor("amount", {header: "Amount"}),
-    columnHelper.accessor("status", {header: "Status"}),
+    columnHelper.accessor("invoiceCode", {header: "Invoice#", cell:(info)=> (
+      <span className="text-red-900">#{info.getValue()}</span>
+    )}),
+    columnHelper.accessor("clientName", {header:"Client", cell:(info)=> (
+      <span className="font-bold">{info.getValue()}</span>
+    )}),
+    columnHelper.accessor("services", {header:"Services", cell:(info)=> (
+      <span className="font-bold text-red-900">{info.getValue()}</span>
+    )}),
+    columnHelper.accessor("amount", {header: "Amount", cell:(info) => (
+      <span className="font-bold">${info.getValue().toFixed(2)}</span>
+    )}),
+    columnHelper.accessor("status", {header: "Status", 
+      cell:(info) =>{
+        const status = info.getValue();
+        const styles: Record<string, string>={
+          paid: "bg-green-100 text-green-800",
+          pending: "bg-yellow-100 text-yellow-800",
+          overdue: "bg-red-100 text-red-800",
+          draft: "bg-gray-200 text-gray-800"
+        };
+        return(
+          <span
+            className={`rounded-full px-2 py-1 text-xs font-medium ${
+              styles[status.toLowerCase()] ?? "bg-gray-100 text-gray-700"
+            }`}
+          >
+            {status}
+          </span>
+        )
+      }
+    }),
     columnHelper.accessor("dueDate", {header: "Due Date"})
 ])
 
@@ -60,26 +91,42 @@ export function DataTable<TData extends RowData>({
   columns,
   data,
 }: DataTableProps<TData>) {
+  const [globalFilter, setGlobalFilter] = React.useState("");
   const table = useTable({
     features,
     data,
     columns,
+    state: {
+      globalFilter,
+    },
+    onGlobalFilterChange: setGlobalFilter,
   })
  
   return (
     <div className="overflow-hidden rounded-md border">
+      <Input
+        placeholder="Filter invoices..."
+        value={globalFilter ?? ""}
+        onChange={(event) => setGlobalFilter(event.target.value)}
+        className="max-w-sm m-4"
+      />
       <Table>
         <TableHeader>
-          {table.getFlatHeaders().map((header) => (
-            <TableHead
-              key={header.id}
-              id={header.id}
-              scope={header.index === 0 ? "col" : undefined}
+          {table.getHeaderGroups().map((headerGroup) => (
+            <TableRow
+              key={headerGroup.id}
             >
-              {header.isPlaceholder ? null : (
-                <table.FlexRender header={header} />
-              )}
-            </TableHead>
+              {headerGroup.headers.map((header) => (
+                <TableHead
+                  key={header.id}
+                  scope={header.index === 0 ? "col" : undefined}
+                >
+                  {header.isPlaceholder ? null : (
+                    <table.FlexRender header={header} />
+                  )}
+                </TableHead>
+              ))}
+            </TableRow>
           ))}
         </TableHeader>
         <TableBody>

@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "./ui/button";
 
-export default function Sidebar() {
+export default function Sidebar({ className = "" }: { className?: string }) {
 
     const navLinks = [
     { name: "Dashboard", href: "/dashboard" },
@@ -13,7 +13,7 @@ export default function Sidebar() {
     { name: "Clients", href: "/clientsPage" }, 
     ]
   return (
-    <div className="w-64 h-screen bg-gray-400 p-6 flex flex-col justify-between">
+    <div className={`sticky top-0 left-0 h-screen w-64 shrink-0 overflow-y-auto bg-gray-400 p-6 flex flex-col justify-between ${className}`}>
       <div>
         <h2 className="text-xl font-bold mb-4">FreelanceFlow</h2>
         <div className="flex ">
