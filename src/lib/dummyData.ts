@@ -26,6 +26,8 @@ export interface Client {
   id: string;
   name: string;
   company: string;
+  email: string;
+  phone: string;
   avatar: string;
   totalInvoices: number;
   activeInvoices: number;
@@ -37,6 +39,8 @@ export const DUMMY_CLIENTS: Client[] = [
   {
     id: "1",
     name: "Ava Thompson",
+    email: "ava.thompson@northwindstudio.com",
+    phone: "+1-555-0101",
     company: "Northwind Studio",
     avatar: "AT",
     totalInvoices: 12450,
@@ -47,6 +51,8 @@ export const DUMMY_CLIENTS: Client[] = [
   {
     id: "2",
     name: "Daniel Brooks",
+    email: "daniel.brooks@brightlabs.io",
+    phone: "+1-555-0102",
     company: "Bright Labs",
     avatar: "DB",
     totalInvoices: 9800,
@@ -57,6 +63,8 @@ export const DUMMY_CLIENTS: Client[] = [
   {
     id: "3",
     name: "Sofia Alvarez",
+    email: "sofia.alvarez@harborco.com",
+    phone: "+1-555-0103",
     company: "Harbor & Co",
     avatar: "SA",
     totalInvoices: 15600,
@@ -67,6 +75,8 @@ export const DUMMY_CLIENTS: Client[] = [
   {
     id: "4",
     name: "Mina Patel",
+    email: "mina.patel@pinedigital.com",
+    phone: "+1-555-0104",
     company: "Pine Digital",
     avatar: "MP",
     totalInvoices: 8300,
@@ -77,6 +87,8 @@ export const DUMMY_CLIENTS: Client[] = [
   {
     id: "5",
     name: "Liam Carter",
+    email: "liam.carter@crestventures.com",
+    phone: "+1-555-0105",
     company: "Crest Ventures",
     avatar: "LC",
     totalInvoices: 11200,
@@ -87,6 +99,8 @@ export const DUMMY_CLIENTS: Client[] = [
   {
     id: "6",
     name: "Nora Kim",
+    email: "nora.kim@evergreenagency.com",
+    phone: "+1-555-0106",
     company: "Evergreen Agency",
     avatar: "NK",
     totalInvoices: 13750,
