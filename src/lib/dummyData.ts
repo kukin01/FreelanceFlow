@@ -4,6 +4,7 @@ export type InvoiceStatus = "paid" | "pending" | "overdue" | "draft";
 
 export interface Invoice {
   id: string;
+  clientId: string;
   invoiceCode: string;
   clientName: string;
   clientAvatar?: string;
@@ -113,6 +114,7 @@ export const DUMMY_CLIENTS: Client[] = [
 export const DUMMY_INVOICES: Invoice[] = [
   {
     id: "1",
+    clientId: "1",
     invoiceCode: "INV-2025-001",
     clientName: "Acme Corp",
     services: ["UI Design", "Prototyping"],
@@ -124,6 +126,7 @@ export const DUMMY_INVOICES: Invoice[] = [
   },
   {
     id: "2",
+    clientId: "2",
     invoiceCode: "INV-2025-002",
     clientName: "ByteWave Studio",
     services: ["Full-Stack Development"],
@@ -135,6 +138,7 @@ export const DUMMY_INVOICES: Invoice[] = [
   },
   {
     id: "3",
+    clientId: "3",
     invoiceCode: "INV-2025-003",
     clientName: "Orion Digital",
     services: ["Brand Identity", "Logo Design", "Style Guide"],
@@ -146,6 +150,7 @@ export const DUMMY_INVOICES: Invoice[] = [
   },
   {
     id: "4",
+    clientId: "4",
     invoiceCode: "INV-2025-004",
     clientName: "Nova Health",
     services: ["Mobile App Design"],
@@ -157,6 +162,7 @@ export const DUMMY_INVOICES: Invoice[] = [
   },
   {
     id: "5",
+    clientId: "5",
     invoiceCode: "INV-2025-005",
     clientName: "Luma Analytics",
     services: ["Dashboard Development", "API Integration"],
@@ -168,6 +174,7 @@ export const DUMMY_INVOICES: Invoice[] = [
   },
   {
     id: "6",
+    clientId: "6",
     invoiceCode: "INV-2025-006",
     clientName: "Crest Media",
     services: ["SEO Consulting", "Content Strategy"],
@@ -179,6 +186,7 @@ export const DUMMY_INVOICES: Invoice[] = [
   },
   {
     id: "7",
+    clientId: "1",
     invoiceCode: "INV-2025-007",
     clientName: "Pinnacle Labs",
     services: ["Backend Architecture"],
